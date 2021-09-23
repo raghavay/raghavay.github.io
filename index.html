@@ -9,10 +9,25 @@
                 <div class="card" style="width: 18rem;">
                   <div class="card-body">
                     <h5 class="card-title">Card title</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="card-link">Card link</a>
-                    <a href="#" class="card-link">Another link</a>
+                    <h6 class="card-subtitle mb-2 text-muted">Validation errors and condition errors</h6>
+                    <p class="card-text">
+                          "success": false,
+                            "dev_message": "Form validation errors",
+                            "message": {
+                                "inputname": [
+                                    "Message here"
+                                ]
+                            },
+                            "e_type": "validation"
+                     </p>                          
+                          <p class="card-text">
+                          {
+                            "success": false,
+                            "dev_message": "For checking is id token",
+                            "message": "Token is not valid",
+                            "e_type": "condition"
+                           }
+                     </p>                    
                   </div>
                 </div>
                 <h3 class="text-success">BASEURL = http://mlm.ramsinfotechs.com/api/v1/</h3>
