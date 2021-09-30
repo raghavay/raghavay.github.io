@@ -32,7 +32,7 @@
           opacity: 0;
         }
 
-        .letters {
+        .letter {
           display: inline-block;
           position: relative;
           float: left;
@@ -40,16 +40,16 @@
           transform-origin: 50% 50% 25px;
         }
 
-        .letters.out {
+        .letter.out {
           transform: rotateX(90deg);
           transition: transform 0.32s cubic-bezier(0.55, 0.055, 0.675, 0.19);
         }
 
-        .letters.behind {
+        .letter.behind {
           transform: rotateX(-90deg);
         }
 
-        .letters.in {
+        .letter.in {
           transform: rotateX(0deg);
           transition: transform 0.38s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
@@ -120,13 +120,13 @@ function changeWord() {
 
 function animateLetterOut(cw, i) {
   setTimeout(function () {
-    cw[i].className = "letters out";
+    cw[i].className = "letter out";
   }, i * 80);
 }
 
 function animateLetterIn(nw, i) {
   setTimeout(function () {
-    nw[i].className = "letters in";
+    nw[i].className = "letter in";
   }, 340 + i * 80);
 }
 
@@ -136,13 +136,13 @@ function splitLetters(word) {
   var letters = [];
   for (var i = 0; i < content.length; i++) {
     var letter = document.createElement("span");
-    letter.className = "letters";
+    letter.className = "letter";
     letter.innerHTML = content.charAt(i);
     word.appendChild(letter);
-    letters.push(letter);
+    letter.push(letter);
   }
 
-  wordArray.push(letters);
+  wordArray.push(letter);
 }
 
 changeWord();
