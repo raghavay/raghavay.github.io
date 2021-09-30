@@ -139,10 +139,10 @@ function splitLetters(word) {
     letter.className = "letter";
     letter.innerHTML = content.charAt(i);
     word.appendChild(letter);
-    letter.push(letter);
+    letters.push(letter);
   }
 
-  wordArray.push(letter);
+  wordArray.push(letters);
 }
 
 changeWord();
