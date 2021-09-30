@@ -1,111 +1,150 @@
 <!DOCTYPE html>
 <html>
 <head>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">        
+        @import url(https://fonts.googleapis.com/css?family=Open+Sans:600);
+
+        body {
+          font-family: 'Open Sans', sans-serif;
+          font-weight: 600;
+          font-size: 40px;
+        }
+
+        .text {
+          position: absolute;
+          width: 450px;
+          left: 50%;
+          margin-left: -225px;
+          height: 40px;
+          top: 50%;
+          margin-top: -20px;
+        }
+
+        p {
+          display: inline-block;
+          vertical-align: top;
+          margin: 0;
+        }
+
+        .word {
+          position: absolute;
+          width: 220px;
+          opacity: 0;
+        }
+
+        .letter {
+          display: inline-block;
+          position: relative;
+          float: left;
+          transform: translateZ(25px);
+          transform-origin: 50% 50% 25px;
+        }
+
+        .letter.out {
+          transform: rotateX(90deg);
+          transition: transform 0.32s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+        }
+
+        .letter.behind {
+          transform: rotateX(-90deg);
+        }
+
+        .letter.in {
+          transform: rotateX(0deg);
+          transition: transform 0.38s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .wisteria {
+          color: #8e44ad;
+        }
+
+        .belize {
+          color: #2980b9;
+        }
+
+        .pomegranate {
+          color: #c0392b;
+        }
+
+        .green {
+          color: #16a085;
+        }
+
+        .midnight {
+          color: #2c3e50;
+        }
+
 </head>
 
 <body>
-        <div class="container">                               
-                <div class="card" style="width: 18rem;">
-                  <div class="card-body">
-                    <h5 class="card-title">Error Types</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">Validation errors and condition errors</h6>
-                    <p class="card-text">
-                          "success": false,
-                            "dev_message": "Form validation errors",
-                            "message": {
-                                "inputname": [
-                                    "Message here"
-                                ]
-                            },
-                            "e_type": "validation"
-                     </p>                          
-                          <p class="card-text">
-                          {
-                            "success": false,
-                            "dev_message": "For checking is id token",
-                            "message": "Token is not valid",
-                            "e_type": "condition"
-                           }
-                     </p>                    
-                  </div>
-                </div>
-                <h3 class="text-success">BASEURL = http://mlm.ramsinfotechs.com/api/v1/</h3>
-                <div class="accordion" id="accordionExample">
-                <div class="card">
-                    <div class="card-header" id="headingOne">
-                      <h2 class="mb-0">
-                        <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                          Register APi
-                        </button>
-                      </h2>
-                    </div>
+        <div class="text">
+          <p>I am</p>
+          <p>
+            <span class="word wisteria">Raghava.</span>
+            <span class="word belize">Web developer.</span>
+            <span class="word pomegranate">Freelancer.</span>
+<!--             <span class="word green">.</span>
+            <span class="word midnight">ererere.</span> -->
+          </p>
+        </div>
+        <script>
+                
+                var words = document.getElementsByClassName("word");
+var wordArray = [];
+var currentWord = 0;
 
-                    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
-                      <div class="card-body">
-                          <ul class="list-group">
-                                  <li class="list-group-item active" aria-current="true">register</li>
-                                  <li class="list-group-item">fullname(required)</li>
-                                  <li class="list-group-item">phonenumber(required)</li>
-                                  <li class="list-group-item">password(required)</li>
-                                  <li class="list-group-item">refer_id(optinal)</li>
-                           </ul>
-                      <strong>Sample URL : {{baseURL}}register?fullname=is name&phonenumber=9966332216&password=123456&refer_id=370UQB</strong>
-                      </div>
-                    </div>
-                  </div>
-                        <!-- start here -->
-                    <div class="card">
-                    <div class="card-header" id="headingTwo">
-                      <h2 class="mb-0">
-                        <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-                          Verify otp Api
-                        </button>
-                      </h2>
-                    </div>
+words[currentWord].style.opacity = 1;
+for (var i = 0; i < words.length; i++) {
+  splitLetters(words[i]);
+}
 
-                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-                      <div class="card-body">
-                          <ul class="list-group">
-                                  <li class="list-group-item active" aria-current="true">checkOtp</li>
-                                  <li class="list-group-item">is_id(required)</li>
-                                  <li class="list-group-item">otp(required)</li>
-                           </ul>
-                      <strong>Sample URL : {{baseURL}}checkOtp?is_id=NfNsYVJFtI0dBzf3m4kEM13kXtnsbbtpDqFEUsC1uYT3DIGusR1F1ZaOp5vu&otp=557357</strong>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!-- End here -->
-                
-                <div class="card">
-                    <div class="card-header" id="headingThree">
-                      <h2 class="mb-0">
-                        <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
-                          Login Api
-                        </button>
-                      </h2>
-                    </div>
+function changeWord() {
+  var cw = wordArray[currentWord];
+  var nw =
+    currentWord == words.length - 1 ? wordArray[0] : wordArray[currentWord + 1];
+  for (var i = 0; i < cw.length; i++) {
+    animateLetterOut(cw, i);
+  }
 
-                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-                      <div class="card-body">
-                          <ul class="list-group">
-                                  <li class="list-group-item active" aria-current="true">login</li>
-                                  <li class="list-group-item">phone(required)</li>
-                                  <li class="list-group-item">password(required)</li>
-                           </ul>
-                      <strong>Sample URL : {{baseURL}}login?phone=9966332216&password=123456</strong>                        
-                      </div>
-                    </div>
-                  </div>
-                </div>
+  for (var i = 0; i < nw.length; i++) {
+    nw[i].className = "letter behind";
+    nw[0].parentElement.style.opacity = 1;
+    animateLetterIn(nw, i);
+  }
+
+  currentWord = currentWord == wordArray.length - 1 ? 0 : currentWord + 1;
+}
+
+function animateLetterOut(cw, i) {
+  setTimeout(function () {
+    cw[i].className = "letter out";
+  }, i * 80);
+}
+
+function animateLetterIn(nw, i) {
+  setTimeout(function () {
+    nw[i].className = "letter in";
+  }, 340 + i * 80);
+}
+
+function splitLetters(word) {
+  var content = word.innerHTML;
+  word.innerHTML = "";
+  var letters = [];
+  for (var i = 0; i < content.length; i++) {
+    var letter = document.createElement("span");
+    letter.className = "letter";
+    letter.innerHTML = content.charAt(i);
+    word.appendChild(letter);
+    letters.push(letter);
+  }
+
+  wordArray.push(letters);
+}
+
+changeWord();
+setInterval(changeWord, 4000);
+
                 
-                
-                
-      </div>
-              
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+        </script>
 </body>
 </html>
